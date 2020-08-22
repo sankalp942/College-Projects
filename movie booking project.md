@@ -19,6 +19,7 @@ string movieN,showT,locationT;
 int a,b,c,d;
 int ticketsN;
 
+//to get movie name
 int movieName(){
 	int name;
 	printf("Which Movie would you like to see?\n\n1.\tAvengers 4:Endgame\n2.\tIron Man 3\n3.\tIt:Chapter 2\n4.\t3 idiots\n\n");
@@ -28,6 +29,7 @@ int movieName(){
 	return name;
 }
 
+//to get show timing
 int showTiming(){
 	int timing;
 	printf("\nSelect Timing:\n\n1.\t9:15AM\n2.\t12:15PM\n3.\t3:15PM\n4.\t6:15PM\n\n");
@@ -37,6 +39,7 @@ int showTiming(){
 	return timing;
 }
 
+//to get number of ticikets
 int numberOfTickets(){
 	int persons;
 	printf("Enter how many tickets you want to book: ");
@@ -44,6 +47,7 @@ int numberOfTickets(){
 	return persons;
 }
 
+//to get location
 int location(){
 	int place;
 	printf("\nWhere do you want to see your movie ");
@@ -53,6 +57,7 @@ int location(){
 	return place;	
 }
 
+//this will return movie name as per condition
 string getMovieName(int b){
 A:	switch(b){
 			case (1):
@@ -74,6 +79,7 @@ A:	switch(b){
 			} 
 }
 
+//this will return show timings
 string getShowTime(int c){
 B:	switch(c){
 			case 1:
@@ -94,6 +100,7 @@ B:	switch(c){
 			}
 }
 
+//this will return location 
 string getTlocation(int d){
 C:	switch(d){
 			case 1:
@@ -112,23 +119,24 @@ C:	switch(d){
 			}
 }
 
+//the main function where the program starts to get executed
 int main(){
 	string mName,sTime,mLocation;
 		do{
 		
-		b=movieName();
-		mName=getMovieName(b);
-		c=showTiming();
-		sTime=getShowTime(c);
-		ticketsN= numberOfTickets();
-		d=location();
-		mLocation=getTlocation(d);
+		b=movieName();				//b will contain the value returned by movieName function
+		mName=getMovieName(b);			//mName will store the movie name
+		c=showTiming();				//c will store the value returned by showTiming
+		sTime=getShowTime(c);			//sTime will store the timing
+		ticketsN= numberOfTickets();		//this will store the number of ticikets
+		d=location();				//d will store the location value returned by location
+		mLocation=getTlocation(d);		//this will store the string value returned by getLocation
 		cout<<"please wait while we book tickets...";
 		cout.flush();
-		usleep(30000);
+		usleep(30000);				//this will make the process sleep for 3 seconds
 		cout<<"\nHurray!! you have booked "<<mName<<" at timing "<<sTime<<" for "<<ticketsN<<" at "
 		<<mLocation<<"\n";
-		cout<<"press 0 to exit and 1 to re-book a movie:\n";
+		cout<<"press 0 to exit and 1 to re-book a movie:\n";		//press 0 to EXIT and 1 to BOOK-AGAIN
 		cin>>a;
 		if(a==0)
 			exit(1);
@@ -136,4 +144,3 @@ int main(){
 		}while(a=1);
 
 }
-
