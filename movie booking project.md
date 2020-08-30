@@ -15,8 +15,8 @@
 
 using namespace std;
 
-string movieN,showT,locationT;
-int a,b,c,d;
+string movieN,showT,locationT,priceM;
+int a,b,c,d,e;
 int ticketsN;
 
 //to get movie name
@@ -45,6 +45,15 @@ int numberOfTickets(){
 	printf("Enter how many tickets you want to book: ");
 	scanf("%d",&persons);
 	return persons;
+}
+
+//price of seat class
+int priceOfMovie(){
+	int price;
+	printf("1.Balcony class:140/-\n2.Premium class:200/-\n");
+	printf("Which class would you like to book: ");
+	scanf("%d",&price);
+	return price;
 }
 
 //to get location
@@ -119,6 +128,21 @@ C:	switch(d){
 			}
 }
 
+//this will return string value of price of seat class
+string getPriceOfMovie(int e){
+D:	switch(e){
+			case 1:
+				return priceM="Baclony Class: 140/-";
+				break;
+			case 2:
+				return priceM="Premium Class: 200/-";
+				break;
+			default:
+				cout<<"\nInvalid input";
+				break;
+			}
+}
+
 //the main function where the program starts to get executed
 int main(){
 	string mName,sTime,mLocation;
@@ -128,13 +152,15 @@ int main(){
 		mName=getMovieName(b);			//mName will store the movie name
 		c=showTiming();				//c will store the value returned by showTiming
 		sTime=getShowTime(c);			//sTime will store the timing
+		e=priceOfMovie();			//e will show price of movie
+		P=getPriceOfMovie(e);			//this will store price value
 		ticketsN= numberOfTickets();		//this will store the number of ticikets
 		d=location();				//d will store the location value returned by location
 		mLocation=getTlocation(d);		//this will store the string value returned by getLocation
 		cout<<"please wait while we book tickets...";
 		cout.flush();
 		usleep(30000);				//this will make the process sleep for 3 seconds
-		cout<<"\nHurray!! you have booked "<<mName<<" at timing "<<sTime<<" for "<<ticketsN<<" at "
+		cout<<"\nHurray!! you have booked "<<mName<<" at timing "<<sTime<<" at "<<P<<" for "<<ticketsN<<" at "
 		<<mLocation<<"\n";
 		cout<<"press 0 to exit and 1 to re-book a movie:\n";		//press 0 to EXIT and 1 to BOOK-AGAIN
 		cin>>a;
