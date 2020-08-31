@@ -17,7 +17,7 @@ using namespace std;
 
 string movieN,showT,locationT,priceM;
 int a,b,c,d,e;
-int ticketsN;
+int ticketsN,totalM;
 
 //to get movie name
 int movieName(){
@@ -64,6 +64,25 @@ int location(){
 	printf("enter the number of place:  ");
 	scanf("%d",&place);
 	return place;	
+}
+
+//this will calculate the total price of ticikets
+int totalPrice(int e){
+	if(e==1){
+		for(int i=1;i<=ticketsN;i++){
+		totalM+=140;
+		}
+		return totalM;
+	}
+	else if(e==2){
+		for(int i=1;i<=ticketsN;i++){
+		totalM+=200;
+		}
+		return totalM;
+	}
+//	else(){
+//	totalM=0;
+//	}
 }
 
 //this will return movie name as per condition
@@ -146,6 +165,7 @@ D:	switch(e){
 //the main function where the program starts to get executed
 int main(){
 	string mName,sTime,mLocation;
+	int Q;
 		do{
 		
 		b=movieName();				//b will contain the value returned by movieName function
@@ -157,11 +177,14 @@ int main(){
 		ticketsN= numberOfTickets();		//this will store the number of ticikets
 		d=location();				//d will store the location value returned by location
 		mLocation=getTlocation(d);		//this will store the string value returned by getLocation
+		Q=totalPrice(e);			//this will call the totalPrice function to calculate total price
+
 		cout<<"please wait while we book tickets...";
 		cout.flush();
 		usleep(30000);				//this will make the process sleep for 3 seconds
 		cout<<"\nHurray!! you have booked "<<mName<<" at timing "<<sTime<<" at "<<P<<" for "<<ticketsN<<" at "
 		<<mLocation<<"\n";
+		cout<<" Total value: "<<Q<<"/-\n";
 		cout<<"press 0 to exit and 1 to re-book a movie:\n";		//press 0 to EXIT and 1 to BOOK-AGAIN
 		cin>>a;
 		if(a==0)
